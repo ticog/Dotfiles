@@ -1,70 +1,302 @@
+/*
+ * __        __          _                  ____  _         _       
+ * \ \      / /_ _ _   _| |__   __ _ _ __  / ___|| |_ _   _| | ___  
+ *  \ \ /\ / / _` | | | | '_ \ / _` | '__| \___ \| __| | | | |/ _ \ 
+ *   \ V  V / (_| | |_| | |_) | (_| | |     ___) | |_| |_| | |  __/ 
+ *    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    |____/ \__|\__, |_|\___| 
+ *                 |___/                              |___/         
+ *  
+ * by Stephan Raabe (2023) 
+ * ----------------------------------------------------- 
+*/
+
+/* -----------------------------------------------------
+ * Import Pywal colors 
+ * ----------------------------------------------------- */
+/* @import 'moccachino.css'; */
+@import 'macchiato.css';
+/* -----------------------------------------------------
+ * General 
+ * ----------------------------------------------------- */
+
 * {
+    font-family: "FiraCode Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     border: none;
-    font-family: 'Fira Code Nerd Font';
-    font-size: 16px;
-    min-height: 45px;
-  }
-  
-  window#waybar {
-    background: transparent;
-  }
-  
-  #custom-arch, #workspaces, #custom-spotify{
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #121111;
-    margin-top: 15px;
-    margin-right: 15px;
-    padding-top: 1px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  #custom-arch {
-    font-size: 20px;
-    border-width: 3px;
-    margin-left: 15px;
-    padding-right: 15px;
-    color: #121111;
-    background-color: #ffffff;
-    
+    border-radius: 0px;
 }
-  
-  #workspaces button {
-    background-color: #ffffff;
-    color: #121111;
-  }
 
-  #clock, #pulseaudio, #custom-vpn, #network, #battery, #custom-weather{
+window#waybar {
+    background-color:rgba(11, 24, 43, 0.76);
+    border-bottom: 0px solid #ffffff;
+    /* color: #FFFFFF; */
+}
+
+/* -----------------------------------------------------
+ * Workspaces 
+ * ----------------------------------------------------- */
+
+#custom-arch {
+  background: @surface0;
+  margin: 2px 1px 3px 1px;
+  padding: 0px 15px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: 0px;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 24px;
+  color: @text;
+}
+
+#workspaces{
+    background: @base;
+    margin: 2px 1px 3px 1px;
+    padding: 0px 1px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 24px;
+    color: @text;
+    padding-right:13px;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-radius: 15px;
+    color: @text;
+    background-color: @white;
+    transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+    padding-right: 12px; 
+    color: @text;
+    background: @blue;
+    border-radius: 15px;
+    min-width: 40px;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}
+
+#workspaces button:hover {
+    color: @text;
+    background: @workspacesbackground2;
+    border-radius: 15px;
+    opacity:0.7;
+}
+
+/* -----------------------------------------------------
+ * Tooltips
+ * ----------------------------------------------------- */
+
+tooltip {
     border-radius: 10px;
-    background-color: #ffffff;
-    color: #121111;
-    margin-top: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 15px;
-  }
+    background-color: @backgroundlight;
+    opacity:0.8;
+    padding:20px;
+    margin:0px;
+}
 
-  #custom-vpn {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    padding-right: 5px;
-    margin-right: 0
-  }
-  
-  #network {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    padding-left: 5px;
-  }
-  
-  #clock {
+tooltip label {
+    color: @textcolor2;
+}
+
+/* -----------------------------------------------------
+ * Window
+ * ----------------------------------------------------- */
+
+#window {
+    background: @base;
+    margin: 5px 15px 5px 0px;
+    padding: 2px 10px 0px 10px;
+    border-radius: 12px;
+    color:@text;
+    font-size:16px;
+    font-weight:normal;
+    opacity:0.8;
+}
+
+window#waybar.empty #window {
+    background-color:transparent;
+}
+
+/* -----------------------------------------------------
+ * Taskbar
+ * ----------------------------------------------------- */
+
+#taskbar {
+    background: @backgroundlight;
+    margin: 3px 15px 3px 0px;
+    padding:0px;
+    border-radius: 15px;
+    font-weight: normal;
+    font-style: normal;
+    opacity:0.8;
+    border: 3px solid @backgroundlight;
+}
+
+#taskbar button {
+    margin:0;
+    border-radius: 15px;
+    padding: 0px 5px 0px 5px;
+}
+
+/* -----------------------------------------------------
+ * Modules
+ * ----------------------------------------------------- */
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
     margin-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  
-  #custom-weather{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+}
+
+/* -----------------------------------------------------
+ * Custom Quicklinks
+ * ----------------------------------------------------- */
+
+#custom-vpn {
+    margin-right: 23px;
+    font-size: 16px;
+    font-weight: bold;
+    color: @text;
+}
+
+#idle_inhibitor {
+    margin-right: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    opacity: 0.8;
+    color: @iconcolor;
+}
+
+#idle_inhibitor.activated {
+    margin-right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.8;
+    color: #dc2f2f;
+}
+
+/* -----------------------------------------------------
+ * Clock
+ * ----------------------------------------------------- */
+
+#clock {
+    background-color: @base;
+    font-size: 16px;
+    color: @text;
+    border-radius: 15px;
+    padding: 1px 10px 0px 10px;
+    margin: 3px 15px 3px 0px;
+    border:3px solid @blue;   
+}
+
+/* -----------------------------------------------------
+ * Pulseaudio
+ * ----------------------------------------------------- */
+
+#pulseaudio {
+    margin-right: 23px;
+    font-size: 16px;
+    font-weight: bold;
+    color: @text;
+}
+
+/* -----------------------------------------------------
+ * Network
+ * ----------------------------------------------------- */
+
+#network, #backlight {
+    margin-right: 23px;
+    font-size: 16px;
+    font-weight: bold;
+    color: @text;
+}
+
+#network.wifi {
+    background-color: @backgroundlight;
+    color: @textcolor2;
+}
+
+/* -----------------------------------------------------
+ * Bluetooth
+ * ----------------------------------------------------- */
+
+#bluetooth, #bluetooth.on, #bluetooth.connected {
+    background-color: @backgroundlight;
+    font-size: 16px;
+    color: @textcolor2;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
+    opacity:0.8;
+}
+
+#bluetooth.off {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* -----------------------------------------------------
+ * Battery
+ * ----------------------------------------------------- */
+
+#battery {
+    background-color: @backgroundlight;
+    font-size: 20px;
+    color: @textcolor2;
+    border-radius: 15px;
+    padding: 2px 15px 0px 10px;
+    margin: 5px 15px 5px 0px;
+}
+
+#battery.charging, #battery.plugged {
+    color: @yellow;
+    background-color: @backgroundlight;
+}
+
+@keyframes blink {
+    to {
+        background-color: @backgroundlight;
+        color: @textcolor2;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: @textcolor3;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* -----------------------------------------------------
+ * Tray
+ * ----------------------------------------------------- */
+
+#tray {
+    padding: 0px 15px 0px 0px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+
