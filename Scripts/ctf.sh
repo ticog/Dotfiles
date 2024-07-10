@@ -25,3 +25,4 @@ echo $ip > ~/CTF/.IP
 export ip=$ip
 cd /home/tico/CTF/HTB/$name
 tmux
+
