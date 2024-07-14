@@ -41,7 +41,7 @@
       "on-click": "cat ~/CTF/.IP | wl-copy"
     },
     "network": {
-      "interface": "wlp3s0",
+      "interface": "wlp0s20f3",
       "format": "{ifname}",
       "format-wifi": "<span color='#cad3f5'>  </span>Connected",
       "format-ethernet": "{ipaddr}/{cidr} ",
@@ -53,7 +53,7 @@
       "exec": "/usr/bin/python $HOME/.config/waybar/scripts/mediaplayer.py",
       "format":"{} ",
       "return-type":"json",
-      "max-length": 50,
+      "max-length": 20,
     },
 
     "custom/weather": {
